@@ -12,15 +12,12 @@ object BaseRepository {
             val response = responseCall.invoke()
             val responseCode = response.code()
             val body = response.body()
-            Log.d("RESSSS","${response.message()}")
             if (response.isSuccessful) {
                 LoadResult.Success(body)
             } else {
-                Log.d("RESSSS","${response.message()}")
                 LoadResult.Error(responseCode, response.message())
             }
         } catch (e:Exception) {
-            Log.d("RESSSS","${e.message}")
             LoadResult.Error(500)
         }
     }
